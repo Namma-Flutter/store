@@ -1,8 +1,15 @@
 import { Search, ShoppingCart, User } from "lucide-react";
+import { motion } from "motion/react";
 
 export default function Navbar() {
   return (
-    <nav className="flex items-center justify-between p-4 bg-white border-b border-slate-200 px-8 mb-15">
+    <motion.nav
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 1.2 }}
+      className="flex items-center justify-between p-4 bg-white/80 border-b border-slate-200 px-8  sticky top-0 z-50 backdrop-blur-3xl"
+      style={{ backdropFilter: "blur(10px)" }}
+    >
       <div className="flex items-center gap-2">
         <img alt="logo" src="/logo.svg" className="size-5" />
         <h1 className="font-bold">Style Hub</h1>
@@ -44,6 +51,6 @@ export default function Navbar() {
           <ShoppingCart className="size-4" />
         </li>
       </ul>
-    </nav>
+    </motion.nav>
   );
 }
