@@ -7,9 +7,9 @@ export default function NewArrivals() {
   return (
     <div id="new-arrivals" className=" container mx-auto space-y-12 z-10">
       <motion.h1
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ amount: 0.3, once: false, margin: "0px 0px -100px 0px" }}
+        initial={{ y: 100, opacity: 0, filter: "blur(10px)" }}
+        whileInView={{ y: 0, opacity: 1, filter: "blur(0px)" }}
+        viewport={{ amount: 0.3, once: true, margin: "0px 0px -100px 0px" }}
         className="uppercase font-black text-7xl text-center"
       >
         New Arrivals
@@ -20,24 +20,39 @@ export default function NewArrivals() {
           trending right now.{" "}
         </p>
       </motion.h1>
-      <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-5 rounded-xl">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-5 rounded-xl">
         {mockData.arrivals.map((item, index) => (
           <ArrivalCompo
             key={index}
+            delay={index * 0.1}
             image={item.image}
             title={item.title}
             icon={item.icon}
             desc={item.desc}
           />
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 }
 
-const ArrivalCompo = ({ image, title, desc, icon }) => {
+const ArrivalCompo = ({ image, title, desc, icon, delay }) => {
   return (
-    <div className="flex aspect-square bg-white rounded-2xl flex-col">
+    <motion.div
+      initial={{
+        scale: 0.4,
+        opacity: 0,
+        filter: "blur(10px)",
+      }}
+      whileInView={{
+        scale: 1,
+        opacity: 1,
+        filter: "blur(0px)",
+      }}
+      viewport={{ amount: 0.3, once: true, margin: "0px 0px -10px 0px" }}
+      transition={{ delay: delay }}
+      className="flex aspect-square bg-white rounded-2xl flex-col"
+    >
       <img src={image} alt="" className="rounded-t-xl" />
       <div className="p-6 flex items-end gap-3 justify-between border border-slate-200 border-t-0 rounded-b-xl">
         <div className="space-y-2">
@@ -53,6 +68,6 @@ const ArrivalCompo = ({ image, title, desc, icon }) => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };

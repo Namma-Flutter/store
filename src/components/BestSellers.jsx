@@ -7,9 +7,9 @@ export default function BestSellers() {
   return (
     <div id="best-sellers" className="container mx-auto p-4 my-20">
       <motion.h1
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ amount: 0.3, once: false, margin: "0px 0px -100px 0px" }}
+        initial={{ y: 100, opacity: 0, filter: "blur(10px)" }}
+        whileInView={{ y: 0, opacity: 1, filter: "blur(0px)" }}
+        viewport={{ amount: 0.3, once: true, margin: "0px 0px -100px 0px" }}
         className="uppercase font-black text-7xl text-center mb-20"
       >
         Best Sellers
@@ -31,6 +31,7 @@ export default function BestSellers() {
               price={item.price}
               icon={item.icon}
               tag={item.tag}
+              delay={key * 0.05}
             />
           );
         })}
@@ -39,9 +40,23 @@ export default function BestSellers() {
   );
 }
 
-const BestSellersCompo = ({ title, image, price, icon, tag }) => {
+const BestSellersCompo = ({ title, image, price, icon, tag, delay }) => {
   return (
-    <div className="p-3 shadow-lg  text-white bg-neutral-800 aspect-square rounded-3xl  relative">
+    <motion.div
+      initial={{
+        rotate: -10,
+        opacity: 0,
+        filter: "blur(10px)",
+      }}
+      whileInView={{
+        rotate: 0,
+        opacity: 1,
+        filter: "blur(0px)",
+      }}
+      viewport={{ amount: 0.3, once: true, margin: "0px 0px 0px 0px" }}
+      transition={{ delay: delay }}
+      className="p-3 shadow-lg  text-white bg-neutral-800 aspect-square rounded-3xl  relative"
+    >
       <div className="relative">
         <img
           src={image}
@@ -76,6 +91,6 @@ const BestSellersCompo = ({ title, image, price, icon, tag }) => {
           </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };

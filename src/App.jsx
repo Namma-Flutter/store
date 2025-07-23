@@ -3,6 +3,7 @@ import Hero from "./components/Hero";
 import NewArrivals from "./components/NewArrivals";
 import BestSellers from "./components/BestSellers";
 import Footer from "./components/Footer";
+import { motion } from "motion/react";
 
 import "./App.css";
 
@@ -11,9 +12,16 @@ function App() {
     <>
       <Navbar />
       <Hero />
-      <div className=" mx-auto p-4 py-20 bg-slate-50">
+      <motion.div
+        initial={{ backgroundColor: "#f8fafc00" }}
+        whileInView={{
+          backgroundColor: "#f8fafcff",
+        }}
+        viewport={{ amount: 0.3, once: false, margin: "0px 0px -50px 0px" }}
+        className=" mx-auto p-4 py-20"
+      >
         <NewArrivals />
-      </div>
+      </motion.div>
       <BestSellers />
       <Footer />
     </>
