@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { motion } from "motion/react";
-import { mockData } from "../utils/data";
+import { mockData } from "../../utils/data";
 import { ArrowUpRight } from "lucide-react";
 
 export default function BestSellers() {

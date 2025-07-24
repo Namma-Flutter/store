@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { ArrowUpRight } from "lucide-react";
 import { motion } from "motion/react";
-import { mockData } from "../utils/data";
+import { mockData } from "../../utils/data";
 
 export default function NewArrivals() {
   return (

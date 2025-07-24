@@ -1,16 +1,13 @@
-import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import NewArrivals from "./components/NewArrivals";
-import BestSellers from "./components/BestSellers";
-import Footer from "./components/Footer";
+import NewArrivals from "./components/Home/NewArrivals";
+import BestSellers from "./components/Home/BestSellers";
 import { motion } from "motion/react";
-
 import "./App.css";
 
 function App() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Hero />
       <motion.div
         initial={{ backgroundColor: "#f8fafc00" }}
@@ -23,7 +20,6 @@ function App() {
         <NewArrivals />
       </motion.div>
       <BestSellers />
-      <Footer />
     </>
   );
 }

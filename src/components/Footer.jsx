@@ -1,13 +1,17 @@
 import { motion } from "motion/react";
 
 export default function Footer() {
+  const isHomePage = window.location.pathname === "/";
+
   return (
-    <div className=" bg-linear-180 mt-36 from-black  to-black/80 p-10 overflow-clip text-white pt-40 relative">
+    <div className="flex-1 bg-linear-180 mt-36 from-black  to-black/80 p-10 overflow-clip text-white pt-40 relative">
       <motion.h1
-        initial={{
-          opacity: 0,
-          filter: "blur(10px)",
-        }}
+        initial={
+          isHomePage && {
+            opacity: 0,
+            filter: "blur(10px)",
+          }
+        }
         whileInView={{
           opacity: 1,
           filter: "blur(0px)",
@@ -22,11 +26,13 @@ export default function Footer() {
       <div className="h-full items-end flex">
         <div className="flex items-center gap-3 w-max flex-1 ">
           <motion.div
-            initial={{
-              opacity: 0,
-              rotate: -180,
-              filter: "blur(10px)",
-            }}
+            initial={
+              isHomePage && {
+                opacity: 0,
+                rotate: -180,
+                filter: "blur(10px)",
+              }
+            }
             whileInView={{
               opacity: 1,
               rotate: 0,
@@ -39,10 +45,12 @@ export default function Footer() {
             <img alt="logo" src="/logo.svg" className="size-8 " />
           </motion.div>
           <motion.h1
-            initial={{
-              opacity: 0,
-              filter: "blur(10px)",
-            }}
+            initial={
+              isHomePage && {
+                opacity: 0,
+                filter: "blur(10px)",
+              }
+            }
             whileInView={{
               opacity: 1,
               filter: "blur(0px)",
@@ -56,7 +64,7 @@ export default function Footer() {
           </motion.h1>
         </div>
         <motion.div
-          initial={{ x: 100, opacity: 0 }}
+          initial={isHomePage && { x: 100, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true }}
           className="flex items-center gap-10"

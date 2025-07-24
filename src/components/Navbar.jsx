@@ -2,23 +2,24 @@ import { Search, ShoppingCart, User } from "lucide-react";
 import { motion } from "motion/react";
 
 export default function Navbar() {
+  const isHomePage = window.location.pathname === "/";
   return (
     <motion.nav
-      initial={{ opacity: 0, y: -20 }}
+      initial={isHomePage && { opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 1.2 }}
       className="flex items-center justify-between p-4 bg-white/80 border-b border-slate-200 px-8  sticky top-0 z-50 backdrop-blur-3xl"
       style={{ backdropFilter: "blur(10px)" }}
     >
-      <div className="flex items-center gap-2">
+      <a href="/" className="flex items-center gap-2 cursor-pointer">
         <img alt="logo" src="/logo.svg" className="size-5" />
         <h1 className="font-bold">Style Hub</h1>
-      </div>
+      </a>
       <ul className="flex-1 hidden md:flex items-center justify-center gap-5 ">
         <li>
           <a
             className="font-semibold text-sm opacity-70 hover:opacity-100"
-            href="#new-arrivals"
+            href="/#new-arrivals"
           >
             New Arrivals
           </a>
@@ -26,7 +27,7 @@ export default function Navbar() {
         <li>
           <a
             className="font-semibold text-sm opacity-70 hover:opacity-100"
-            href="#best-sellers"
+            href="/#best-sellers"
           >
             Best Sellers
           </a>
@@ -34,7 +35,7 @@ export default function Navbar() {
         <li>
           <a
             className="font-semibold text-sm opacity-70 hover:opacity-100"
-            href="#catalog"
+            href="catalog"
           >
             Catalog
           </a>

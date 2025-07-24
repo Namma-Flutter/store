@@ -2,6 +2,8 @@ import { Mars, Venus, Glasses, Shirt } from "lucide-react";
 import IconColor from "../utils/IconColor";
 
 export const mockData = {
+  categories: ["accessories", "shirts", "pants", "shorts"],
+
   arrivals: [
     {
       image: "/newArrival-1.png",
