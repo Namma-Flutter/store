@@ -1,4 +1,4 @@
-import { Mars, Venus, Glasses, Shirt } from "lucide-react";
+import { Mars, Shirt, Venus, Glasses } from "lucide-react";
 import IconColor from "../utils/IconColor";
 
 export const mockData = {
@@ -31,6 +31,7 @@ export const mockData = {
       price: "149$",
       tag: ["accessories"],
       icon: <IconColor icon={<Glasses size={30} />} color="bg-black" />,
+      rating: 4.5,
     },
     {
       title: "Stylish Sunglasses",
@@ -38,6 +39,7 @@ export const mockData = {
       price: "119$",
       tag: ["accessories"],
       icon: <IconColor icon={<Glasses size={30} />} color="bg-black" />,
+      rating: 4.5,
     },
     {
       title: "Blue Sunglasses",
@@ -45,6 +47,7 @@ export const mockData = {
       price: "129$",
       tag: ["accessories"],
       icon: <IconColor icon={<Glasses size={30} />} color="bg-black" />,
+      rating: 4.5,
     },
     {
       title: "Only You Tee",
@@ -52,6 +55,7 @@ export const mockData = {
       price: "99$",
       tag: ["shirts", "men", "women"],
       icon: <IconColor icon={<Shirt size={30} />} color="bg-black" />,
+      rating: 4.5,
     },
     {
       title: "Blessed Tee",
@@ -59,6 +63,7 @@ export const mockData = {
       price: "49$",
       tag: ["shirts", "men", "women"],
       icon: <IconColor icon={<Shirt size={30} />} color="bg-black" />,
+      rating: 4.5,
     },
     {
       title: "Grind Never Stop Tee",
@@ -66,6 +71,57 @@ export const mockData = {
       price: "69$",
       tag: ["shirts", "men", "women"],
       icon: <IconColor icon={<Shirt size={30} />} color="bg-black" />,
+      rating: 4.5,
+    },
+  ],
+  wishList: [
+    {
+      title: "Honey Glasses",
+      image: "/BS1.jpg",
+      price: "149$",
+      tag: ["accessories"],
+      icon: <IconColor icon={<Glasses size={30} />} color="bg-black" />,
+      rating: 4.5,
+    },
+    {
+      title: "Stylish Sunglasses",
+      image: "/BS2.jpg",
+      price: "119$",
+      tag: ["accessories"],
+      icon: <IconColor icon={<Glasses size={30} />} color="bg-black" />,
+      rating: 4.5,
+    },
+    {
+      title: "Blue Sunglasses",
+      image: "/BS6.jpg",
+      price: "129$",
+      tag: ["accessories"],
+      icon: <IconColor icon={<Glasses size={30} />} color="bg-black" />,
+      rating: 4.5,
+    },
+    {
+      title: "Only You Tee",
+      image: "/BS3.jpg",
+      price: "99$",
+      tag: ["shirts", "men", "women"],
+      icon: <IconColor icon={<Shirt size={30} />} color="bg-black" />,
+      rating: 4.5,
+    },
+    {
+      title: "Blessed Tee",
+      image: "/BS4.jpg",
+      price: "49$",
+      tag: ["shirts", "men", "women"],
+      icon: <IconColor icon={<Shirt size={30} />} color="bg-black" />,
+      rating: 4.5,
+    },
+    {
+      title: "Grind Never Stop Tee",
+      image: "/BS5.jpg",
+      price: "69$",
+      tag: ["shirts", "men", "women"],
+      icon: <IconColor icon={<Shirt size={30} />} color="bg-black" />,
+      rating: 4.5,
     },
   ],
 };

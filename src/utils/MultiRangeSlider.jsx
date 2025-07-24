@@ -129,11 +129,11 @@ export function DoubleSlider({
     <div className={cn("relative w-full", className)}>
       <div
         ref={sliderRef}
-        className="relative h-2 w-full rounded-full bg-gray-200 cursor-pointer"
+        className="relative h-1 w-full rounded-full bg-gray-200 cursor-pointer"
       >
         {/* Track between handles */}
         <div
-          className="absolute h-2 rounded-full bg-black transition-all duration-200 ease-out"
+          className="absolute h-1 rounded-full bg-black transition-all duration-200 ease-out"
           style={{
             left: `${getPercentage(localValue[0])}%`,
             width: `${getPercentage(localValue[1]) - getPercentage(localValue[0])}%`,
@@ -143,7 +143,7 @@ export function DoubleSlider({
         {/* Left handle */}
         <div
           className={cn(
-            "absolute top-1/2 h-5 w-5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-black bg-white shadow-md transition-all duration-200 ease-out hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2",
+            "absolute top-1/2 h-5 w-5 -translate-x-1/2  -translate-y-1/2 rounded-full border-2 border-black bg-white shadow-md transition-all duration-200 ease-out hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2",
             isDragging === 0 && "scale-110",
             disabled && "cursor-not-allowed opacity-50"
           )}
@@ -187,7 +187,7 @@ export function DoubleSlider({
             const midPos = (leftPos + rightPos) / 2;
             return (
               <div
-                className="absolute top-6 text-xs font-medium text-gray-600 bg-white px-2 py-1 rounded shadow-sm border transition-all duration-200 ease-out whitespace-nowrap"
+                className="absolute top-6 text-xs font-medium text-stone-800 bg-stone-200 px-3 py-1 rounded-full transition-all duration-200 ease-out whitespace-nowrap"
                 style={{
                   left: `${midPos}%`,
                   transform: "translateX(-50%)",
@@ -204,7 +204,7 @@ export function DoubleSlider({
           return (
             <>
               <div
-                className="absolute top-6 text-xs font-medium text-gray-600 bg-white px-2 py-1 rounded shadow-sm border transition-all duration-200 ease-out"
+                className="absolute top-6 text-xs font-medium text-stone-800 bg-stone-200 px-3 py-1 rounded-full transition-all duration-200 ease-out"
                 style={{
                   left: `${leftPos}%`,
                   transform: "translateX(-50%)",
@@ -215,7 +215,7 @@ export function DoubleSlider({
               </div>
 
               <div
-                className="absolute top-6 text-xs font-medium text-gray-600 bg-white px-2 py-1 rounded shadow-sm border transition-all duration-200 ease-out"
+                className="absolute top-6 text-xs font-medium text-stone-800 bg-stone-200 px-3 py-1 rounded-full transition-all duration-200 ease-out"
                 style={{
                   left: `${rightPos}%`,
                   transform: "translateX(-50%)",

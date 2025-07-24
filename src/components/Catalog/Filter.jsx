@@ -1,11 +1,14 @@
+import { motion } from "motion/react";
 import { mockData } from "../../utils/data";
 import { DoubleSlider } from "../../utils/MultiRangeSlider";
 import { useEffect, useState } from "react";
-import Rating from "../../utils/Rating";
+import { Search } from "lucide-react";
+import { RatingSelect } from "../../utils/Rating";
 
 /* eslint-disable react/prop-types */
 export default function Filter({ className }) {
   const [priceRange, setPriceRange] = useState([100, 900]);
+  const [rating, setRating] = useState(0);
 
   useEffect(() => {
     console.log(priceRange);
@@ -16,16 +19,19 @@ export default function Filter({ className }) {
       <h1 className="text-3xl font-bold">Filter</h1>
       <form className="flex flex-col gap-6 my-6">
         <div className="">
-          <label htmlFor="search-input" className="font-medium text-stone-600">
+          <label htmlFor="search-input" className="font-medium text-stone-600 ">
             Search
           </label>
-          <input
-            type="text"
-            placeholder="Start Searching!"
-            className="border mt-2 bg-white border-stone-300 p-2 rounded w-full"
-          />
+          <div className="border mt-2 bg-white border-stone-300 p-2 rounded-lg w-full flex items-center gap-2">
+            <Search className="opacity-50 size-5" />
+            <input
+              type="text"
+              placeholder="Start Searching!"
+              className="flex-1 active:outline-none focus:outline-none text-sm"
+            />
+          </div>
         </div>
-        <div>
+        <div className="text-sm">
           <label
             htmlFor="category-selector"
             className="font-medium text-stone-600"
@@ -35,9 +41,10 @@ export default function Filter({ className }) {
           <select
             name="category"
             id="category-selector"
-            className="w-full mt-2 p-3 border bg-white border-stone-300 rounded"
+            placeholder="Select Category"
+            className="w-full mt-2 p-[0.55rem] border  bg-white border-stone-300 rounded-lg"
           >
-            <option value="">Select</option>
+            <option value="">All</option>
             {mockData.categories.map((cat, index) => {
               return (
                 <option value={cat} key={`${cat}-${index}`}>
@@ -60,11 +67,34 @@ export default function Filter({ className }) {
             className="w-full mt-5"
           />
         </div>
-        <div className="mt-8">
+        <div className="mt-10">
           <label htmlFor="rating" className="font-medium text-stone-600">
             Rating
           </label>
-          <Rating rating={5} className="mt-2" />
+          {/* <Rating rating={2.5} className="mt-2" /> */}
+          <div className="flex items-center gap-10 justify-between mt-2">
+            <RatingSelect
+              size={"size-8"}
+              setRating={setRating}
+              rating={rating}
+              className="flex-1 gap-2"
+            />
+
+            <p className="text-xl font-semibold text-stone-800 bg-stone-200 color-stone-800 px-5 py-1 rounded-full">
+              <motion.div
+                key={rating}
+                initial={{ y: 20, opacity: 0, scale: 0.8 }}
+                animate={{ y: 0, opacity: 1, scale: 1 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 800,
+                  damping: 20,
+                }}
+              >
+                {rating}
+              </motion.div>
+            </p>
+          </div>
         </div>
       </form>
     </div>

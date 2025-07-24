@@ -1,3 +1,7 @@
 .dbg {
   border: 2px dotted red;
 }
+
+html {
+  overflow-x: hidden;
+}
