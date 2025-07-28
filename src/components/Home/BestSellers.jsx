@@ -25,6 +25,7 @@ export default function BestSellers() {
         {mockData.bestSellers.map((item, key) => {
           return (
             <BestSellersCompo
+              link={`/p/${key}`}
               key={key}
               title={item.title}
               image={item.image}
@@ -40,9 +41,10 @@ export default function BestSellers() {
   );
 }
 
-const BestSellersCompo = ({ title, image, price, icon, tag, delay }) => {
+const BestSellersCompo = ({ title, image, price, icon, tag, delay, link }) => {
   return (
-    <motion.div
+    <motion.a
+      href={link}
       initial={{
         rotate: -10,
         opacity: 0,
@@ -91,6 +93,6 @@ const BestSellersCompo = ({ title, image, price, icon, tag, delay }) => {
           </button>
         </div>
       </div>
-    </motion.div>
+    </motion.a>
   );
 };

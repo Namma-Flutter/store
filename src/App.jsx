@@ -15,7 +15,7 @@ function App() {
           backgroundColor: "#f8fafcff",
         }}
         viewport={{ amount: 0.3, once: false, margin: "0px 0px -50px 0px" }}
-        className=" mx-auto p-4 py-20"
+        className=" mx-auto p-4 py-20 "
       >
         <NewArrivals />
       </motion.div>

@@ -91,11 +91,11 @@ export function Rating({ rating, className }) {
       {[1, 2, 3, 4, 5].map((value) => (
         <span key={value}>
           {rating >= value ? (
-            <IoIosStar className=" w-7 h-7 fill-yellow-400 text-yellow-400" />
+            <IoIosStar className="w-5 h-5 fill-yellow-400 text-yellow-400" />
           ) : rating >= value - 0.5 ? (
-            <IoIosStarHalf className="w-7 h-7 fill-yellow-400 text-yellow-400 color-black/60 color-1" />
+            <IoIosStarHalf className="w-5 h-5 fill-yellow-400 text-yellow-400 color-black/60 color-1" />
           ) : (
-            <IoIosStarOutline className="w-7 h-7 fill-yellow-400 text-yellow-400 color-black/60 stroke-1" />
+            <IoIosStarOutline className="w-5 h-5 fill-yellow-400 text-yellow-400 color-black/60 stroke-1" />
           )}
         </span>
       ))}
