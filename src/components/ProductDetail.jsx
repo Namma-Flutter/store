@@ -1,32 +1,66 @@
 import { useParams } from "react-router-dom";
 import { mockData } from "../utils/data";
 import { Rating, RatingNumber } from "../utils/Rating";
-import {
-  FaApplePay,
-  FaCcApplePay,
-  FaCcMastercard,
-  FaCcVisa,
-  FaGooglePay,
-} from "react-icons/fa";
-import { GrGooglePay, GrGooglePlay, GrVisa } from "react-icons/gr";
-import { RiMastercardFill } from "react-icons/ri";
+import { FaCcApplePay, FaCcMastercard, FaCcVisa } from "react-icons/fa";
+import { motion } from "motion/react";
 import { SiGooglepay } from "react-icons/si";
 
 export default function ProductDetail() {
   const { id } = useParams();
   const data = mockData.bestSellers[id];
 
+  const variantsProps = {
+    hidden: { opacity: 0, y: 20, filter: "blur(10px)" },
+    visible: { opacity: 1, y: 0, filter: "blur(0px)" },
+  };
+
   return (
     <div className="container mx-auto p-6 mt-10 flex">
       <div className="w-full space-y-2 ">
-        <img src={data.image} className="rounded-lg w-full" />
-        <div className="flex gap-2 [&>img]:size-full [&>img]:rounded-lg">
-          <img src={data.image} />
-          <img src={data.image} />
-          <img src={data.image} />
-        </div>
+        <motion.img
+          initial={{
+            opacity: 0,
+            x: -20,
+            filter: "blur(10px)",
+          }}
+          animate={{
+            opacity: 1,
+            x: 0,
+            filter: "blur(0px)",
+          }}
+          src={data.image}
+          className="rounded-lg w-full"
+        />
+        <motion.div
+          className="flex gap-2 [&>img]:size-full [&>img]:rounded-lg"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            visible: {
+              transition: {
+                staggerChildren: 0.1,
+              },
+            },
+          }}
+        >
+          <motion.img variants={variantsProps} src={data.image} />
+          <motion.img variants={variantsProps} src={data.image} />
+          <motion.img variants={variantsProps} src={data.image} />
+        </motion.div>
       </div>
-      <div className="w-full p-10 space-y-10">
+      <motion.div
+        initial={{
+          opacity: 0,
+          x: 20,
+          filter: "blur(10px)",
+        }}
+        animate={{
+          opacity: 1,
+          x: 0,
+          filter: "blur(0px)",
+        }}
+        className="w-full p-10 space-y-10"
+      >
         <h1 className="text-5xl font-semibold mb-2">{data.title}</h1>
         <div className="flex gap-2 items-center">
           <div className="flex gap-2  items-center">
@@ -97,7 +131,7 @@ export default function ProductDetail() {
           <FaCcVisa className="size-7" />
           <FaCcMastercard className="size-7" />
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }
