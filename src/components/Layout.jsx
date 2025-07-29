@@ -14,7 +14,7 @@ export default function Layout({ children }) {
       mockData.bestSellers.map((item, index) => ({
         id: index + 1,
         name: item.title,
-        price: parseFloat(item.price.replace("$", "")),
+        price: item.price,
         image: item.image,
       }))
     );
