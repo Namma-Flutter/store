@@ -36,7 +36,7 @@ export default function Hero() {
   return (
     <div className="h-[93vh] grid relative place-items-center ">
       <LineSvg />
-      <div className="container mx-auto flex-col flex items-center justify-center  w-max relative ">
+      <div className=" mx-auto flex-col flex items-center justify-center w-max relative ">
         <Blobs />
         <Content />
       </div>
@@ -52,7 +52,7 @@ const LineSvg = () => {
       viewBox="0 0 647 600"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="absolute top-[-5rem] right-0 "
+      className="absolute top-[-5rem] right-0 hidden lg:block"
     >
       <motion.path
         initial={{ pathLength: 0, opacity: 0, filter: "blur(10px)" }}
@@ -86,19 +86,19 @@ const Blobs = () => {
     <>
       <motion.div
         {...animateProps}
-        className="blob-1 bg-purple-300 size-80 rounded-full absolute mix-blend-multiply left-[-2rem]  opacity-50 blur-2xl"
+        className="blob-1 bg-purple-300 size-40 sm:size-80 rounded-full absolute mix-blend-multiply left-[-2rem]  opacity-50 blur-2xl"
       ></motion.div>
       <motion.div
         {...animateProps}
-        className="blob-1 bg-purple-300 size-80 rounded-full absolute mix-blend-multiply right-[-1.5rem]  opacity-50 blur-2xl"
+        className="blob-1 bg-purple-300 size-40 sm:size-80 rounded-full absolute mix-blend-multiply right-[-1.5rem]  opacity-50 blur-2xl"
       ></motion.div>
       <motion.div
         {...animateProps}
-        className="blob-1 bg-linear-to-b from-green-300 to-amber-300 size-80  rounded-full mix-blend-multiply  absolute top-[-2rem]   opacity-50 blur-2xl"
+        className="blob-1 bg-linear-to-b from-green-300 to-amber-300 size-40 sm:size-80  rounded-full mix-blend-multiply  absolute top-[-2rem]   opacity-50 blur-2xl"
       ></motion.div>
       <motion.div
         {...animateProps}
-        className="blob-1 bg-yellow-300/50 size-80  rounded-full mix-blend-multiply  absolute bottom-[-4rem]    blur-2xl"
+        className="blob-1 bg-yellow-300/50 size-40 sm:size-80  rounded-full mix-blend-multiply  absolute bottom-[-4rem]    blur-2xl"
       ></motion.div>
     </>
   );
@@ -121,7 +121,7 @@ const Content = () => {
 
 const Left = () => {
   return (
-    <div className="space-y-[2rem] mb-2">
+    <div className="space-y-[2rem] sm:mb-2">
       <motion.img
         initial={{
           x: 80,
@@ -138,7 +138,7 @@ const Left = () => {
         transition={{ delay: delayDuration + 0.2 }}
         src="/3.jpg"
         alt=""
-        className="w-14 rounded drop-shadow-md drop-shadow-black/20 rotate-[-20deg]"
+        className="w-10 sm:w-14 rounded drop-shadow-md drop-shadow-black/20 rotate-[-20deg]"
       />
       <motion.img
         initial={{
@@ -156,7 +156,7 @@ const Left = () => {
         transition={{ delay: delayDuration + 0.4 }}
         src="/2.jpg"
         alt=""
-        className="w-14 rounded drop-shadow-md drop-shadow-black/20 rotate-[-20deg]"
+        className="w-10 sm:w-14 rounded drop-shadow-md drop-shadow-black/20 rotate-[-20deg]"
       />
     </div>
   );
@@ -170,21 +170,21 @@ const Logo = () => {
       transition={{ delay: delayDuration }}
       src="/logo.svg"
       alt="Logo"
-      className="drop-shadow-black size-40"
+      className="drop-shadow-black size-30 sm:size-40"
     />
   );
 };
 
 const Right = () => {
   return (
-    <div className="space-y-[2rem] mb-2">
+    <div className="space-y-[2rem] sm:mb-2">
       <motion.img
         initial={{ x: -80, y: "100%", rotate: -20, opacity: 0 }}
         animate={{ x: 0, y: "0", rotate: 0, opacity: 1 }}
         transition={{ delay: delayDuration + 0.3 }}
         src="/4.jpg"
         alt=""
-        className="w-14 rounded drop-shadow-md drop-shadow-black/20 rotate-[20deg]"
+        className="w-10 sm:w-14 rounded drop-shadow-md drop-shadow-black/20 rotate-[20deg]"
       />
       <motion.img
         initial={{ x: -80, y: "100%", rotate: -20, opacity: 0 }}
@@ -192,7 +192,7 @@ const Right = () => {
         transition={{ delay: delayDuration + 0.5 }}
         src="/1.jpg"
         alt=""
-        className="w-14 rounded drop-shadow-md drop-shadow-black/20 rotate-[20deg]"
+        className="w-10 sm:w-14 rounded drop-shadow-md drop-shadow-black/20 rotate-[20deg]"
       />
     </div>
   );
@@ -204,7 +204,7 @@ const Title = () => {
       variants={sentance}
       initial="hidden"
       animate="visible"
-      className="text-[10rem] leading-[10rem] font-black tracking-tighter"
+      className="text-[4.5rem] sm:text-[8rem] -mt-8 sm:-mt-0 lg:text-[10rem] leading-[10rem] font-black tracking-tighter"
     >
       {title.split("").map((char, index) => {
         const randomColor =
@@ -251,7 +251,7 @@ const Desc = () => {
       initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
       animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       transition={{ delay: delayDuration + 0.2 }}
-      className="text-center text-balance max-w-[50rem] text-sm opacity-80 font-medium mt-1"
+      className="text-center text-balance max-w-sm -mt-10 sm:-mt-0 sm:max-w-xl md:max-w-[50rem] text-[9px] sm:text-xs  lg:text-sm opacity-80 font-medium lg:mt-1"
     >
       A platform for discovering and sharing design styles, this space empowers
       creatives to explore unique aesthetics, curate personal collections, and

@@ -94,7 +94,7 @@ const BestSellersCompo = ({
         </div>
         <div className="flex justify-between items-center">
           <p className="text-xl px-2 size-max rounded py-1 font-medium bg-white text-black ">
-            {price}
+            ${price}
           </p>
           <button className=" bg-white p-3 text-black rounded-full hover:bg-white/80 transition-colors cursor-pointer">
             <ArrowUpRight />

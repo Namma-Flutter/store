@@ -28,7 +28,7 @@ export const mockData = {
     {
       title: "Honey Glasses",
       image: "/BS1.jpg",
-      price: "149",
+      price: 149,
       tag: ["accessories"],
       icon: <IconColor icon={<Glasses size={30} />} color="bg-black" />,
       rating: 4.5,
@@ -37,7 +37,7 @@ export const mockData = {
     {
       title: "Stylish Sunglasses",
       image: "/BS2.jpg",
-      price: "119",
+      price: 119,
       tag: ["accessories"],
       icon: <IconColor icon={<Glasses size={30} />} color="bg-black" />,
       rating: 4.5,
@@ -46,7 +46,7 @@ export const mockData = {
     {
       title: "Blue Sunglasses",
       image: "/BS6.jpg",
-      price: "129",
+      price: 129,
       tag: ["accessories"],
       icon: <IconColor icon={<Glasses size={30} />} color="bg-black" />,
       rating: 4.5,
@@ -55,7 +55,7 @@ export const mockData = {
     {
       title: "Only You Tee",
       image: "/BS3.jpg",
-      price: "99",
+      price: 99,
       tag: ["shirts", "men", "women"],
       icon: <IconColor icon={<Shirt size={30} />} color="bg-black" />,
       rating: 4.5,
@@ -64,7 +64,7 @@ export const mockData = {
     {
       title: "Blessed Tee",
       image: "/BS4.jpg",
-      price: "49",
+      price: 49,
       tag: ["shirts", "men", "women"],
       icon: <IconColor icon={<Shirt size={30} />} color="bg-black" />,
       rating: 4.5,
@@ -73,7 +73,7 @@ export const mockData = {
     {
       title: "Grind Never Stop Tee",
       image: "/BS5.jpg",
-      price: "69",
+      price: 69,
       tag: ["shirts", "men", "women"],
       icon: <IconColor icon={<Shirt size={30} />} color="bg-black" />,
       rating: 4.5,
@@ -84,7 +84,7 @@ export const mockData = {
     {
       title: "Honey Glasses",
       image: "/BS1.jpg",
-      price: "149",
+      price: 149,
       tag: ["accessories"],
       icon: <IconColor icon={<Glasses size={30} />} color="bg-black" />,
       rating: 4.5,
@@ -92,7 +92,7 @@ export const mockData = {
     {
       title: "Stylish Sunglasses",
       image: "/BS2.jpg",
-      price: "119",
+      price: 119,
       tag: ["accessories"],
       icon: <IconColor icon={<Glasses size={30} />} color="bg-black" />,
       rating: 4.5,
@@ -100,7 +100,7 @@ export const mockData = {
     {
       title: "Blue Sunglasses",
       image: "/BS6.jpg",
-      price: "129",
+      price: 129,
       tag: ["accessories"],
       icon: <IconColor icon={<Glasses size={30} />} color="bg-black" />,
       rating: 4.5,
@@ -108,7 +108,7 @@ export const mockData = {
     {
       title: "Only You Tee",
       image: "/BS3.jpg",
-      price: "99",
+      price: 99,
       tag: ["shirts", "men", "women"],
       icon: <IconColor icon={<Shirt size={30} />} color="bg-black" />,
       rating: 4.5,
@@ -116,7 +116,7 @@ export const mockData = {
     {
       title: "Blessed Tee",
       image: "/BS4.jpg",
-      price: "49",
+      price: 49,
       tag: ["shirts", "men", "women"],
       icon: <IconColor icon={<Shirt size={30} />} color="bg-black" />,
       rating: 4.5,
@@ -124,7 +124,7 @@ export const mockData = {
     {
       title: "Grind Never Stop Tee",
       image: "/BS5.jpg",
-      price: "69",
+      price: 69,
       tag: ["shirts", "men", "women"],
       icon: <IconColor icon={<Shirt size={30} />} color="bg-black" />,
       rating: 4.5,

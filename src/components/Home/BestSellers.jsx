@@ -83,7 +83,7 @@ const BestSellersCompo = ({ title, image, price, icon, tag, delay, link }) => {
           </p>
           <div className="flex items-center gap-2">
             <p className="text-2xl px-2 size-max rounded py-1 font-medium bg-white text-black ">
-              {price}
+              ${price}
             </p>
           </div>
         </div>
