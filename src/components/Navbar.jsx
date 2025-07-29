@@ -72,12 +72,16 @@ export default function Navbar() {
         </li>
       </ul>
       <ul className="flex items-center gap ">
-        <li className="p-3">
-          <Search className="size-4" />
-        </li>
-        <li className="p-3">
-          <User className="size-4" />
-        </li>
+        <a href="/catalog">
+          <li className="p-3">
+            <Search className="size-4" />
+          </li>
+        </a>
+        <a onClick={() => setIsOpen(!isOpen)}>
+          <li className="p-3">
+            <User className="size-4" />
+          </li>
+        </a>
         <li
           className="bg-slate-200 rounded-full grid place-items-center p-3 cursor-pointer "
           onClick={() => setIsOpen(!isOpen)}

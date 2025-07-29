@@ -21,7 +21,7 @@ export default function BestSellers() {
           favorites among our community.
         </p>
       </motion.h1>
-      <div className="grid grid-cols-1 mg:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {mockData.bestSellers.map((item, key) => {
           return (
             <BestSellersCompo
@@ -57,7 +57,7 @@ const BestSellersCompo = ({ title, image, price, icon, tag, delay, link }) => {
       }}
       viewport={{ amount: 0.3, once: true, margin: "0px 0px 0px 0px" }}
       transition={{ delay: delay }}
-      className="p-3 shadow-lg  text-white bg-neutral-800 aspect-square rounded-3xl  relative"
+      className="p-3 shadow-lg  text-white bg-neutral-800 aspect-square rounded-3xl relative"
     >
       <div className="relative">
         <img
@@ -72,7 +72,7 @@ const BestSellersCompo = ({ title, image, price, icon, tag, delay, link }) => {
 
       <div className="flex p-4 justify-between ">
         <div className=" space-y-3">
-          <h2 className="text-2xl font-bold">{title}</h2>
+          <h2 className="text-2xl font-bold line-clamp-1">{title}</h2>
           <p className="-mt-3 text-sm capitalize opacity-80 font-medium">
             {tag.map((t, i) => (
               <span key={i}>

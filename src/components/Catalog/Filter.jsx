@@ -68,19 +68,22 @@ export default function Filter({ className }) {
           />
         </div>
         <div className="mt-10">
-          <label htmlFor="rating" className="font-medium text-stone-600">
+          <label
+            htmlFor="rating"
+            className="font-medium block lg:hidden xl:block text-stone-600"
+          >
             Rating
           </label>
           {/* <Rating rating={2.5} className="mt-2" /> */}
-          <div className="flex items-center gap-10 justify-between mt-2">
+          <div className="flex flex-row lg:flex-col xl:flex-row items-center gap-10 lg:gap-2 xl:gap-10 justify-between mt-2 overflow-clip">
             <RatingSelect
-              size={"size-8"}
+              size={"size-8 lg:size-6 xl:size-8 "}
               setRating={setRating}
               rating={rating}
               className="flex-1 gap-2"
             />
 
-            <p className="text-xl font-semibold text-stone-800 bg-stone-200 color-stone-800 px-5 py-1 rounded-full">
+            <p className="text-xl lg:text-lg xl:text-xl font-semibold text-stone-800 bg-stone-200 color-stone-800 px-5 py-1 rounded-full">
               <motion.div
                 key={rating}
                 initial={{ y: 20, opacity: 0, scale: 0.8 }}

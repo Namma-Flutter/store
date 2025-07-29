@@ -4,7 +4,7 @@ export default function Footer() {
   const isHomePage = window.location.pathname === "/";
 
   return (
-    <div className="flex-1 bg-linear-180 mt-36 from-black  to-black/80 p-10 overflow-clip text-white pt-40 relative">
+    <div className="flex-1 bg-linear-180 mt-36 from-black to-black/80 p-10 overflow-clip text-white sm:pt-40 relative">
       <motion.h1
         initial={
           isHomePage && {
@@ -18,13 +18,13 @@ export default function Footer() {
         }}
         viewport={{ once: true }}
         transition={{ delay: 0.7 }}
-        className="absolute text-[12rem] h-full my-auto tracking-[-20px] text-[#262626] font-black  top-0 left-[2rem]"
+        className="absolute hidden sm:block tracking-tighter text-[12rem] h-full my-auto sm:tracking-[-20px] text-[#262626] font-black  top-0 left-[2rem]"
       >
         STYLE HUB
       </motion.h1>
 
-      <div className="h-full items-end flex">
-        <div className="flex items-center gap-3 w-max flex-1 ">
+      <div className="h-full items-baseline sm:items-end flex sm:gap-0 gap-10 sm:flex-row flex-col">
+        <div className="flex items-center gap-3 w-max  sm:flex-1 ">
           <motion.div
             initial={
               isHomePage && {
@@ -67,7 +67,7 @@ export default function Footer() {
           initial={isHomePage && { x: 100, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true }}
-          className="flex items-center gap-10"
+          className="flex items-center gap-10 z-10 w-auto "
         >
           <div className="">
             <h4 className="uppercase font-medium">Shop</h4>
