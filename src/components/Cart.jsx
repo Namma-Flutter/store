@@ -2,49 +2,78 @@
 import { AiFillCloseCircle } from "react-icons/ai";
 import { motion, AnimatePresence } from "motion/react";
 import { ShoppingCart, Trash } from "lucide-react";
+import { useState, useEffect } from "react";
 
 export default function Cart({ data, removeItem, isOpen, setIsOpen }) {
+  const [small, setSmall] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setSmall(window.innerWidth < 768);
+    };
+
+    handleResize(); // Initial check
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <AnimatePresence>
       {isOpen && (
-        <motion.div
-          initial={{
-            filter: "blur(10px)",
-            opacity: 0,
-            x: "100%",
-          }}
-          animate={{
-            filter: "blur(0px)",
-            opacity: 1,
-            x: 0,
-          }}
-          exit={{
-            filter: "blur(10px)",
-            opacity: 0,
-            x: "100%",
-          }}
-          className="absolute bg-white m-10 top-0 right-0 w-[25rem] p-6 shadow-xl rounded-lg z-50 overflow-clip"
-        >
-          <div className="flex items-center justify-between mb-4">
-            <h1 className="text-xl font-semibold">Your Cart</h1>
-            <AiFillCloseCircle
-              className="cursor-pointer size-5 text-black "
-              onClick={() => setIsOpen(false)}
-            />
-          </div>
-          <div className="flex my-5 flex-col gap-4 overflow-y-auto overflow-x-hidden  max-h-[50vh] scrollbar-thin scrollbar-thumb-gray-200 ">
-            {data === null ? (
-              <Skeleton />
-            ) : data.length === 0 ? (
-              <NoItems />
-            ) : (
-              <DataCompo data={data} removeItem={removeItem} />
-            )}
-          </div>
-          <button className="w-full bg-black p-2 rounded-md font-semibold text-white">
-            Check Out
-          </button>
-        </motion.div>
+        <>
+          {/* Dark Overlay/Backdrop */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 lg:bg-gradient-to-l bg-gradient-to-b from-black/40 to-transparent bg-opacity-50 z-[999]  to-60%"
+            onClick={() => setIsOpen(false)}
+          />
+
+          {/* Cart Modal */}
+          <motion.div
+            initial={{
+              filter: "blur(10px)",
+              opacity: 0,
+              ...(small ? { y: "-100%" } : { x: "100%" }),
+            }}
+            animate={{
+              filter: "blur(0px)",
+              opacity: 1,
+              ...(small ? { y: 0 } : { x: 0 }),
+            }}
+            exit={{
+              filter: "blur(10px)",
+              opacity: 0,
+              ...(small ? { y: "-100%" } : { x: "100%" }),
+            }}
+            className="fixed bg-white m-0 md:m-10 mt-10 top-0 left-1/2 -translate-x-1/2 md:left-auto md:right-0 md:translate-x-0 w-[25rem] p-6 shadow-xl rounded-lg z-[1000] overflow-clip"
+          >
+            <div className="flex items-center justify-between mb-4">
+              <h1 className="text-xl font-semibold">Your Cart</h1>
+              <AiFillCloseCircle
+                className="cursor-pointer size-5 text-black "
+                onClick={() => setIsOpen(false)}
+              />
+            </div>
+            <div className="flex my-5 flex-col gap-4 overflow-y-auto overflow-x-hidden  max-h-[50vh] scrollbar-thin scrollbar-thumb-gray-200 ">
+              {data === null ? (
+                <Skeleton />
+              ) : data.length === 0 ? (
+                <NoItems />
+              ) : (
+                <DataCompo data={data} removeItem={removeItem} />
+              )}
+            </div>
+            <button className="w-full bg-black p-2 rounded-md font-semibold text-white">
+              Check Out
+            </button>
+          </motion.div>
+        </>
       )}
     </AnimatePresence>
   );

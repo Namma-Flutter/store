@@ -1,37 +1,9 @@
 /* eslint-disable react/prop-types */
 import { Search, ShoppingCart, User } from "lucide-react";
 import { motion } from "motion/react";
-import { useState, useEffect } from "react";
-import Cart from "./Cart";
-import { mockData } from "../utils/data";
 
-export default function Navbar() {
+export default function Navbar({ isCartOpen, setIsCartOpen }) {
   const isHomePage = window.location.pathname === "/";
-
-  const [isOpen, setIsOpen] = useState(false);
-  const [data, setData] = useState(null);
-
-  const fetchData = async () => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    setData(
-      mockData.bestSellers.map((item, index) => ({
-        id: index + 1,
-        name: item.title,
-        price: parseFloat(item.price.replace("$", "")),
-        image: item.image,
-      }))
-    );
-  };
-
-  const removeItem = (id) => {
-    setData((prevData) => prevData.filter((item) => item.id !== id));
-  };
-
-  useEffect(() => {
-    if (isOpen) {
-      fetchData();
-    }
-  }, [isOpen]);
 
   return (
     <motion.nav
@@ -77,23 +49,17 @@ export default function Navbar() {
             <Search className="size-4" />
           </li>
         </a>
-        <a onClick={() => setIsOpen(!isOpen)}>
+        <a onClick={() => setIsCartOpen(!isCartOpen)}>
           <li className="p-3">
             <User className="size-4" />
           </li>
         </a>
         <li
           className="bg-slate-200 rounded-full grid place-items-center p-3 cursor-pointer "
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => setIsCartOpen(!isCartOpen)}
         >
           <ShoppingCart className="size-4" />
         </li>
-        <Cart
-          removeItem={removeItem}
-          data={data}
-          isOpen={isOpen}
-          setIsOpen={setIsOpen}
-        />
       </ul>
     </motion.nav>
   );
