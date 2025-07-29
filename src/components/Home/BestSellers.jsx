@@ -5,7 +5,10 @@ import { ArrowUpRight } from "lucide-react";
 
 export default function BestSellers() {
   return (
-    <div id="best-sellers" className="container mx-auto p-4 my-20">
+    <div
+      id="best-sellers"
+      className="container mx-auto p-4 my-20 overflow-hidden"
+    >
       <motion.h1
         initial={{ y: 100, opacity: 0, filter: "blur(10px)" }}
         whileInView={{ y: 0, opacity: 1, filter: "blur(0px)" }}

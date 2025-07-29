@@ -38,10 +38,10 @@ export default function Navbar() {
       initial={isHomePage && { opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 1.2 }}
-      className="flex items-center justify-between p-4 bg-white/80 border-b border-slate-200 px-8  sticky top-0 z-50 backdrop-blur-3xl"
+      className="flex items-center justify-between p-4 bg-white/80 border-b border-slate-200 px-8  sticky top-0 z-50 backdrop-blur-3xl "
       style={{ backdropFilter: "blur(10px)" }}
     >
-      <a href="/" className="flex items-center gap-2 cursor-pointer">
+      <a href="/" className="flex items-center gap-2  cursor-pointer">
         <img alt="logo" src="/logo.svg" className="size-5" />
         <h1 className="font-bold">Style Hub</h1>
       </a>

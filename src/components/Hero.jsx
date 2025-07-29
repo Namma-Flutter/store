@@ -34,9 +34,9 @@ const delayDuration = 0.2;
 
 export default function Hero() {
   return (
-    <div className="h-[93vh] grid relative place-items-center ">
+    <div className="h-[93vh] grid relative place-items-center  overflow-x-hidden">
       <LineSvg />
-      <div className=" mx-auto flex-col flex items-center justify-center w-max relative ">
+      <div className=" mx-auto flex-col flex items-center justify-center w-auto relative ">
         <Blobs />
         <Content />
       </div>

@@ -7,7 +7,6 @@ import "./App.css";
 function App() {
   return (
     <>
-      {/* <Navbar /> */}
       <Hero />
       <motion.div
         initial={{ backgroundColor: "#f8fafc00" }}
