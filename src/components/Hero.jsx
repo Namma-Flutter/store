@@ -36,7 +36,7 @@ export default function Hero() {
   return (
     <div className="my-20 mt-30 md:m-0 md:h-[93vh] grid relative place-items-center  overflow-x-clip">
       <LineSvg />
-      <div className=" mx-auto flex-col flex items-center justify-center w-auto relative ">
+      <div className=" mx-auto  p-10 md:p-0 flex-col flex items-center justify-center w-auto relative ">
         <Blobs />
         <Content />
       </div>
@@ -204,7 +204,7 @@ const Title = () => {
       variants={sentance}
       initial="hidden"
       animate="visible"
-      className="text-[4.5rem] sm:text-[8rem] -mt-8 sm:-mt-0 lg:text-[10rem] leading-[10rem] font-black tracking-tighter"
+      className="text-[4rem] sm:text-[8rem] -mt-8 sm:-mt-0 lg:text-[10rem] leading-[10rem] font-black tracking-tighter"
     >
       {title.split("").map((char, index) => {
         const randomColor =
@@ -255,11 +255,7 @@ const Desc = () => {
     >
       A platform for discovering and sharing design styles, this space empowers
       creatives to explore unique aesthetics, curate personal collections, and
-      connect with a community of like-minded designers. Whether you&apos;re
-      seeking inspiration, showcasing your work, or simply browsing through
-      trends, it offers a visually rich experience tailored to your creative
-      vision. From minimalist interfaces to bold experimental layouts, this is
-      where design meets expression and collaboration.
+      connect with a community of like-minded designers.
     </motion.p>
   );
 };
