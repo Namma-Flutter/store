@@ -16,36 +16,36 @@ export default function ProductDetail() {
 
   return (
     <div className="container mx-auto p-6 mt-10 flex flex-col  lg:flex-row">
-      <div className="w-full space-y-2 ">
+      <div className="lg:w-[50%] space-y-2">
         <motion.img
-          initial={{
-            opacity: 0,
-            x: -20,
-            filter: "blur(10px)",
-          }}
-          animate={{
-            opacity: 1,
-            x: 0,
-            filter: "blur(0px)",
-          }}
+          initial={{ opacity: 0, x: -20, filter: "blur(10px)" }}
+          animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
           src={data.image}
           className="rounded-lg w-full"
         />
         <motion.div
-          className="flex gap-2 [&>img]:size-full [&>img]:rounded-lg"
+          className="grid grid-cols-3 gap-2 [&>img]:rounded-lg"
           initial="hidden"
           animate="visible"
           variants={{
-            visible: {
-              transition: {
-                staggerChildren: 0.1,
-              },
-            },
+            visible: { transition: { staggerChildren: 0.1 } },
           }}
         >
-          <motion.img variants={variantsProps} src={data.image} />
-          <motion.img variants={variantsProps} src={data.image} />
-          <motion.img variants={variantsProps} src={data.image} />
+          <motion.img
+            variants={variantsProps}
+            src={data.image}
+            className="size-full cursor-pointer"
+          />
+          <motion.img
+            variants={variantsProps}
+            src={data.image}
+            className="size-full cursor-pointer"
+          />
+          <motion.img
+            variants={variantsProps}
+            src={data.image}
+            className="size-full cursor-pointer"
+          />
         </motion.div>
       </div>
       <motion.div
@@ -59,7 +59,7 @@ export default function ProductDetail() {
           x: 0,
           filter: "blur(0px)",
         }}
-        className="w-full md:p-5 mt-10 lg:mt-0 xl:p-10  space-y-8 xl:space-y-10"
+        className="lg:w-[50%] md:p-5 mt-10 lg:mt-0 xl:p-10  space-y-8 xl:space-y-10"
       >
         <h1 className="text-4xl lg:text-3xl xl:text-5xl font-semibold mb-2">
           {data.title}
