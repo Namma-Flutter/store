@@ -15,7 +15,7 @@ export default function ProductDetail() {
   };
 
   return (
-    <div className="container mx-auto p-6 mt-10 flex">
+    <div className="container mx-auto p-6 mt-10 flex flex-col  lg:flex-row">
       <div className="w-full space-y-2 ">
         <motion.img
           initial={{
@@ -59,9 +59,11 @@ export default function ProductDetail() {
           x: 0,
           filter: "blur(0px)",
         }}
-        className="w-full p-10 space-y-10"
+        className="w-full md:p-5 mt-10 lg:mt-0 xl:p-10  space-y-8 xl:space-y-10"
       >
-        <h1 className="text-5xl font-semibold mb-2">{data.title}</h1>
+        <h1 className="text-4xl lg:text-3xl xl:text-5xl font-semibold mb-2">
+          {data.title}
+        </h1>
         <div className="flex gap-2 items-center">
           <div className="flex gap-2  items-center">
             <RatingNumber rating={data.rating} />
@@ -73,8 +75,10 @@ export default function ProductDetail() {
           </button>
         </div>
 
-        <h2 className="text-6xl font-bold">${Number(data.price).toFixed(2)}</h2>
-        <p className="text-sm leading-6 text-stone-500 font-medium mb-5">
+        <h2 className=" text-5xl xl:text-6xl font-bold">
+          ${Number(data.price).toFixed(2)}
+        </h2>
+        <p className="text-xs xl:text-sm leading-5 text-stone-500 font-medium mb-5">
           {data.desc}
         </p>
 

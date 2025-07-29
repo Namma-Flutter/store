@@ -65,7 +65,7 @@ export default function Navbar() {
         <li>
           <a
             className="font-semibold text-sm opacity-70 hover:opacity-100"
-            href="catalog"
+            href="/catalog"
           >
             Catalog
           </a>

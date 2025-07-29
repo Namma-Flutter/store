@@ -7,7 +7,7 @@ export default function Products({ className }) {
   return (
     <div className={className}>
       <h1 className="text-3xl font-bold">Available Products</h1>
-      <div className="grid grid-cols-3 my-6 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-2 xl:grid-cols-3 my-6 gap-5">
         {mockData.bestSellers.map((item, index) => (
           <BestSellersCompo
             key={index}
@@ -18,6 +18,7 @@ export default function Products({ className }) {
             tag={item.tag}
             delay={index * 0.1}
             rating={item.rating}
+            link={`/p/${index}`}
           />
         ))}
         {mockData.bestSellers.map((item, index) => (
@@ -30,6 +31,7 @@ export default function Products({ className }) {
             tag={item.tag}
             delay={index * 0.1}
             rating={item.rating}
+            link={`/p/${index}`}
           />
         ))}
       </div>
@@ -45,9 +47,11 @@ const BestSellersCompo = ({
   tag,
   delay,
   rating,
+  link,
 }) => {
   return (
-    <motion.div
+    <motion.a
+      href={link}
       initial={{
         y: 20,
         opacity: 0,
@@ -97,6 +101,6 @@ const BestSellersCompo = ({
           </button>
         </div>
       </div>
-    </motion.div>
+    </motion.a>
   );
 };

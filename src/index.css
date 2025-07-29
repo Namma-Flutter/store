@@ -6,8 +6,17 @@
   font-family: "Inter Tight", sans-serif;
 }
 
+@utility dbg {
+  border-width: 2px;
+  border-style: dotted;
+  border-color: red;
+}
+
 @theme {
   --animate-slide-in: sildein 1s ease 300ms;
+  /* add a color */
+
+  --dbg: 2px dotted red;
 
   @keyframes sildein {
     0% {
