@@ -13,7 +13,6 @@ export default function ProductDetail() {
     getProductById,
     addToCart,
     getCartItemQuantity,
-    updateCartQuantity,
     isInWishlist,
     toggleWishlist,
   } = useProducts();

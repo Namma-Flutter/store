@@ -8,7 +8,7 @@ export default function Products({ className }) {
 
   return (
     <div className={className}>
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex flex-col  items-end gap-5 md:gap-0 md:flex-row justify-between md:items-center mb-6">
         <h1 className="text-3xl font-bold">
           Available Products ({filteredProducts.length})
         </h1>
