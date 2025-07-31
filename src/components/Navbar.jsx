@@ -2,7 +2,11 @@
 import { Search, ShoppingCart, User } from "lucide-react";
 import { motion } from "motion/react";
 
-export default function Navbar({ isCartOpen, setIsCartOpen }) {
+export default function Navbar({
+  isCartOpen,
+  setIsCartOpen,
+  cartItemCount = 0,
+}) {
   const isHomePage = window.location.pathname === "/";
 
   return (
@@ -55,10 +59,15 @@ export default function Navbar({ isCartOpen, setIsCartOpen }) {
           </li>
         </a>
         <li
-          className="bg-slate-200 rounded-full grid place-items-center p-3 cursor-pointer "
+          className="bg-slate-200 rounded-full grid place-items-center p-3 cursor-pointer relative"
           onClick={() => setIsCartOpen(!isCartOpen)}
         >
           <ShoppingCart className="size-4" />
+          {cartItemCount > 0 && (
+            <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium">
+              {cartItemCount > 99 ? "99+" : cartItemCount}
+            </span>
+          )}
         </li>
       </ul>
     </motion.nav>

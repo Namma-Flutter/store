@@ -6,7 +6,9 @@ import Catalog from "./components/Catalog.jsx";
 import "./index.css";
 import Layout from "./components/Layout.jsx";
 import ProductDetail from "./components/ProductDetail.jsx";
+import Wishlist from "./components/Wishlist.jsx";
 import { Navigate } from "react-router-dom";
+import { ProductProvider } from "./context/ProductContext.jsx";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: "/catalog",
     element: <Catalog />,
+  },
+  {
+    path: "/wishlist",
+    element: <Wishlist />,
   },
   {
     path: "/p",
@@ -29,8 +35,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Layout>
-      <RouterProvider router={router} />
-    </Layout>
+    <ProductProvider>
+      <Layout>
+        <RouterProvider router={router} />
+      </Layout>
+    </ProductProvider>
   </React.StrictMode>
 );

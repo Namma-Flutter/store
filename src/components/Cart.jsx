@@ -1,11 +1,14 @@
 /* eslint-disable react/prop-types */
 import { AiFillCloseCircle } from "react-icons/ai";
 import { motion, AnimatePresence } from "motion/react";
-import { ShoppingCart, Trash } from "lucide-react";
+import { ShoppingCart, Trash, Plus, Minus } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useProducts } from "../context/ProductContext";
 
-export default function Cart({ data, removeItem, isOpen, setIsOpen }) {
+export default function Cart({ isOpen, setIsOpen }) {
   const [small, setSmall] = useState(false);
+  const { cart, removeFromCart, updateCartQuantity, getCartTotal, clearCart } =
+    useProducts();
 
   useEffect(() => {
     const handleResize = () => {
@@ -60,30 +63,44 @@ export default function Cart({ data, removeItem, isOpen, setIsOpen }) {
                 onClick={() => setIsOpen(false)}
               />
             </div>
-            <div className="flex my-5 flex-col gap-4 overflow-y-auto overflow-x-hidden  max-h-[50vh] scrollbar-thin scrollbar-thumb-gray-200 ">
-              {data === null ? (
-                <Skeleton />
-              ) : data.length === 0 ? (
-                <NoItems />
-              ) : (
-                <DataCompo data={data} removeItem={removeItem} />
-              )}
+
+            {cart.length > 0 && (
+              <div className="flex items-center justify-between mb-4 text-sm">
+                <span className="text-gray-600">
+                  {cart.length} item{cart.length !== 1 ? "s" : ""}
+                </span>
+                <button
+                  onClick={clearCart}
+                  className="text-red-500 hover:text-red-700 transition-colors"
+                >
+                  Clear All
+                </button>
+              </div>
+            )}
+
+            <div className="flex my-5 flex-col gap-4 overflow-y-auto overflow-x-hidden max-h-[50vh] scrollbar-thin scrollbar-thumb-gray-200">
+              {cart.length === 0 ? <NoItems /> : <CartItems />}
             </div>
-            <button className="w-full bg-black p-2 rounded-md font-semibold text-white">
-              Check Out
-            </button>
+
+            {cart.length > 0 && (
+              <>
+                <div className="border-t pt-4 mb-4">
+                  <div className="flex justify-between items-center text-lg font-semibold">
+                    <span>Total:</span>
+                    <span>${getCartTotal().toFixed(2)}</span>
+                  </div>
+                </div>
+                <button className="w-full bg-black p-2 rounded-md font-semibold text-white hover:bg-gray-800 transition-colors">
+                  Check Out
+                </button>
+              </>
+            )}
           </motion.div>
         </>
       )}
     </AnimatePresence>
   );
 }
-
-const Skeleton = () => {
-  return (
-    <div className="h-[20rem] rounded-md w-full animate-pulse bg-gray-200"></div>
-  );
-};
 
 const NoItems = () => {
   return (
@@ -99,10 +116,12 @@ const NoItems = () => {
   );
 };
 
-const DataCompo = ({ data, removeItem }) => {
+const CartItems = () => {
+  const { cart, removeFromCart, updateCartQuantity } = useProducts();
+
   return (
     <AnimatePresence>
-      {data.map((item, key) => (
+      {cart.map((item, key) => (
         <motion.div
           key={item.id}
           initial={{ opacity: 0, x: -20 }}
@@ -118,25 +137,47 @@ const DataCompo = ({ data, removeItem }) => {
               },
             },
           }}
-          className="flex items-center justify-between gap-3 p-3 border-b border-gray-100 last:border-b-0"
+          className="flex items-center gap-3 p-3 border-b border-gray-100 last:border-b-0"
         >
           <img
             src={item.image}
-            alt={item.name}
+            alt={item.title}
             className="w-16 h-16 rounded object-cover"
           />
           <div className="flex flex-1 flex-col">
-            <h2 className="font-semibold">{item.name}</h2>
+            <h2 className="font-semibold text-sm">{item.title}</h2>
             <p className="text-sm text-gray-500">${item.price}</p>
+            <p className="text-xs text-gray-400">
+              Subtotal: ${(item.price * item.quantity).toFixed(2)}
+            </p>
           </div>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-black  text-white p-2 rounded-md "
-            onClick={() => removeItem(item.id)}
-          >
-            <Trash size={16} />
-          </motion.button>
+          <div className="flex flex-col items-end gap-2">
+            <div className="flex items-center gap-1 bg-gray-100 rounded-full p-1">
+              <button
+                onClick={() => updateCartQuantity(item.id, item.quantity - 1)}
+                className="p-1 hover:bg-gray-200 rounded-full transition-colors"
+              >
+                <Minus size={12} />
+              </button>
+              <span className="px-2 text-sm font-medium min-w-[24px] text-center">
+                {item.quantity}
+              </span>
+              <button
+                onClick={() => updateCartQuantity(item.id, item.quantity + 1)}
+                className="p-1 hover:bg-gray-200 rounded-full transition-colors"
+              >
+                <Plus size={12} />
+              </button>
+            </div>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-red-500 text-white p-1.5 rounded-md hover:bg-red-600 transition-colors"
+              onClick={() => removeFromCart(item.id)}
+            >
+              <Trash size={12} />
+            </motion.button>
+          </div>
         </motion.div>
       ))}
     </AnimatePresence>
