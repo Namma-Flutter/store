@@ -19,7 +19,12 @@ export default function Navbar({
     >
       <a href="/" className="flex items-center gap-2  cursor-pointer">
         <img alt="logo" src="/logo.png" className="size-5" />
-        <h1 className="font-bold">Namma Flutter</h1>
+        <h1 className="font-bold">
+          <span className="bg-gradient-to-br from-blue-500 to-cyan-400 bg-clip-text text-transparent">
+            Namma
+          </span>{" "}
+          Flutter
+        </h1>
       </a>
       <ul className="flex-1 hidden md:flex items-center justify-center gap-5 ">
         <li>

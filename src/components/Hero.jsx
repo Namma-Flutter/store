@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
+import { useState, useEffect } from "react";
 
 const colorArray = [
   "oklch(64.8% 0.2 131.684)",
@@ -15,7 +16,7 @@ const sentance = {
     opacity: 1,
 
     transition: {
-      delay: 2,
+      delay: 0.5,
       staggerChildren: 0.04,
       default: { type: "spring" },
       opacity: { ease: "linear" },
@@ -28,10 +29,10 @@ const delayDuration = 0.2;
 
 export default function Hero() {
   return (
-    <div className="my-20 mt-30 md:m-0 md:h-[93vh] grid relative place-items-center  overflow-x-clip">
+    <div className="sm:h-[93vh] w-full min-h-[60vh] mb-10 md:mb-0 md:-mt-10 grid relative place-items-center overflow-x-clip">
       <Background />
       {/* <LineSvg /> */}
-      <div className=" mx-auto  p-10 md:p-0 flex-col flex items-center justify-center w-auto relative ">
+      <div className=" mx-auto  p-4 md:p-0 flex-col flex items-center justify-center w-auto relative ">
         <Content />
       </div>
     </div>
@@ -85,7 +86,7 @@ const Content = () => {
           transition={{ delay: delayDuration + 0.2 }}
           src="/Cap.png"
           alt="Cap"
-          className="w-20 sm:w-28 drop-shadow-lg mt-12"
+          className="w-16 sm:w-28  mt-12"
         />
         <Logo />
         <motion.img
@@ -94,7 +95,7 @@ const Content = () => {
           transition={{ delay: delayDuration + 0.3 }}
           src="/Glasses.png"
           alt="Glasses"
-          className="w-20 sm:w-28 drop-shadow-lg mt-12"
+          className="w-16 sm:w-28  mt-12"
         />
       </div>
       <NewLabel />
@@ -113,15 +114,31 @@ const Logo = () => {
       transition={{ delay: delayDuration }}
       src="/logo.png"
       alt="Logo"
-      className="drop-shadow-[0_0_15px_rgba(255,255,255,1)] size-20 sm:size-40"
+      className="drop-shadow-[0_0_15px_rgba(255,255,255,1)] size-30 sm:size-40"
     />
   );
 };
+
+const interpolateColor = (start, end, factor) => {
+  const result = start.map((s, i) => Math.round(s + factor * (end[i] - s)));
+  return `rgb(${result.join(",")})`;
+};
+
+const startColor = [59, 130, 246]; // blue-500
+const endColor = [34, 211, 238]; // cyan-400
 
 const Title = () => {
   const parts = title.split(" ");
   const firstWord = parts[0];
   const secondLineWords = parts.slice(1);
+  const [animationCompleted, setAnimationCompleted] = useState(false);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setAnimationCompleted(true);
+    }, 2000); // Wait for animation to finish
+    return () => clearTimeout(timeout);
+  }, []);
 
   // Create an array of characters with word metadata for the second line
   const secondLineChars = [];
@@ -139,44 +156,52 @@ const Title = () => {
       variants={sentance}
       initial="hidden"
       animate="visible"
-      className="text-6xl sm:text-7xl lg:text-8xl leading-[0.85] font-black tracking-tighter text-center"
+      className="text-5xl sm:text-7xl lg:text-8xl leading-[0.85] font-black tracking-tighter text-center"
     >
       <span className="bg-gradient-to-br from-blue-500 to-cyan-400 bg-clip-text text-transparent inline-block pr-3 text-[1.2em]">
-        {firstWord.split("").map((char, index) => {
-          const randomColor =
-            colorArray[Math.floor(Math.random() * colorArray.length)];
+        {animationCompleted
+          ? firstWord
+          : firstWord.split("").map((char, index) => {
+              const randomColor =
+                colorArray[Math.floor(Math.random() * colorArray.length)];
 
-          const letterVariant = {
-            hidden: {
-              opacity: 0,
-              y: 40,
-              transform: "skewX(-20deg)",
-              filter: "blur(10px)",
-              color: randomColor,
-            },
-            visible: {
-              filter: "blur(0px)",
-              transform: "skewX(0deg)",
-              opacity: 1,
-              color: "transparent",
-              y: 0,
-              transition: {
-                duration: 0.8,
-                default: { type: "spring" },
-              },
-            },
-          };
+              const targetColor = interpolateColor(
+                startColor,
+                endColor,
+                index / (firstWord.length - 1)
+              );
 
-          return (
-            <motion.span
-              key={char + "-" + index}
-              variants={letterVariant}
-              className="inline-block"
-            >
-              {char}
-            </motion.span>
-          );
-        })}
+              const letterVariant = {
+                hidden: {
+                  opacity: 0,
+                  y: 40,
+                  transform: "skewX(-20deg)",
+                  filter: "blur(10px)",
+                  color: randomColor,
+                },
+                visible: {
+                  filter: "blur(0px)",
+                  transform: "skewX(0deg)",
+                  opacity: 1,
+                  color: targetColor,
+                  y: 0,
+                  transition: {
+                    duration: 0.8,
+                    default: { type: "spring" },
+                  },
+                },
+              };
+
+              return (
+                <motion.span
+                  key={char + "-" + index}
+                  variants={letterVariant}
+                  className="inline-block"
+                >
+                  {char}
+                </motion.span>
+              );
+            })}
       </span>
       <br />
       <span className="inline-block text-black">
@@ -325,64 +350,10 @@ const NewLabel = () => {
 
 const Background = () => {
   return (
-    <div className="absolute inset-0 -z-10 h-full w-full overflow-hidden">
-      <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3],
-          x: [0, 100, 0],
-          y: [0, 50, 0],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute -top-20 -left-20 h-96 w-96 rounded-full bg-blue-200 blur-3xl mix-blend-multiply opacity-30"
-      />
-      <motion.div
-        animate={{
-          scale: [1, 1.1, 1],
-          opacity: [0.3, 0.6, 0.3],
-          x: [0, -100, 0],
-          y: [0, 100, 0],
-        }}
-        transition={{
-          duration: 15,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 2,
-        }}
-        className="absolute top-20 right-0 h-80 w-80 rounded-full bg-purple-200 blur-3xl mix-blend-multiply opacity-30"
-      />
-      <motion.div
-        animate={{
-          scale: [1, 1.3, 1],
-          opacity: [0.3, 0.5, 0.3],
-          x: [0, 50, 0],
-          y: [0, -50, 0],
-        }}
-        transition={{
-          duration: 12,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 4,
-        }}
-        className="absolute bottom-0 left-20 h-72 w-72 rounded-full bg-pink-200 blur-3xl mix-blend-multiply opacity-30"
-      />
-      <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3],
-          rotation: [0, 90, 0],
-        }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-yellow-100 blur-3xl mix-blend-multiply opacity-20"
-      />
+    <div className="absolute inset-0 -z-10 h-full w-full overflow-hidden flex items-center justify-center bg-white">
+      <div className="absolute inset-0 h-full w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1.5px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
+      <div className="absolute w-[80vw] h-[80vw] md:w-[60vw] md:h-[60vw] bg-blue-100/90 rounded-full blur-[100px] pointer-events-none mix-blend-multiply opacity-70" />
+      <div className="absolute w-[60vw] h-[60vw] md:w-[40vw] md:h-[40vw] bg-cyan-100/90 rounded-full blur-[80px] pointer-events-none mix-blend-multiply opacity-60" />
     </div>
   );
 };
