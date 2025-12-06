@@ -42,7 +42,7 @@ export default function Footer() {
             transition={{ delay: 0.2 }}
             className="bg-white w-max p-1 rounded"
           >
-            <img alt="logo" src="/logo.svg" className="size-8 " />
+            <img alt="logo" src="/logo.png" className="size-8 " />
           </motion.div>
           <motion.h1
             initial={

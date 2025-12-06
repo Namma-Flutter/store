@@ -18,8 +18,8 @@ export default function Navbar({
       style={{ backdropFilter: "blur(10px)" }}
     >
       <a href="/" className="flex items-center gap-2  cursor-pointer">
-        <img alt="logo" src="/logo.svg" className="size-5" />
-        <h1 className="font-bold">Style Hub</h1>
+        <img alt="logo" src="/logo.png" className="size-5" />
+        <h1 className="font-bold">Namma Flutter</h1>
       </a>
       <ul className="flex-1 hidden md:flex items-center justify-center gap-5 ">
         <li>
