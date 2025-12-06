@@ -78,8 +78,24 @@ const LineSvg = () => {
 const Content = () => {
   return (
     <>
-      <div className="flex flex-col items-center justify-center">
+      <div className="flex items-center justify-center  mb-3 pointer-events-none select-none">
+        <motion.img
+          initial={{ x: 50, opacity: 0, rotate: -20 }}
+          animate={{ x: 0, opacity: 1, rotate: -15 }}
+          transition={{ delay: delayDuration + 0.2 }}
+          src="/Cap.png"
+          alt="Cap"
+          className="w-20 sm:w-28 drop-shadow-lg mt-12"
+        />
         <Logo />
+        <motion.img
+          initial={{ x: -50, opacity: 0, rotate: 20 }}
+          animate={{ x: 0, opacity: 1, rotate: 15 }}
+          transition={{ delay: delayDuration + 0.3 }}
+          src="/Glasses.png"
+          alt="Glasses"
+          className="w-20 sm:w-28 drop-shadow-lg mt-12"
+        />
       </div>
       <NewLabel />
       <Title />
