@@ -30,7 +30,7 @@ const delayDuration = 0.2;
 export default function Hero() {
   return (
     <div className="sm:h-[93vh] w-full min-h-[60vh] mb-10 md:mb-0 md:-mt-10 grid relative place-items-center overflow-x-clip">
-      <Background />
+      {/* <Background /> */}
       {/* <LineSvg /> */}
       <div className=" mx-auto  p-4 md:p-0 flex-col flex items-center justify-center w-auto relative ">
         <Content />
@@ -112,7 +112,7 @@ const Logo = () => {
       initial={{ opacity: 0, filter: "blur(10px)", scale: 0.5, rotate: -90 }}
       animate={{ opacity: 1, filter: "blur(0px)", scale: 1, rotate: 0 }}
       transition={{ delay: delayDuration }}
-      src="/logo.png"
+      src="/Logo.png"
       alt="Logo"
       className="drop-shadow-[0_0_15px_rgba(255,255,255,1)] size-30 sm:size-40"
     />
@@ -168,7 +168,7 @@ const Title = () => {
               const targetColor = interpolateColor(
                 startColor,
                 endColor,
-                index / (firstWord.length - 1)
+                index / (firstWord.length - 1),
               );
 
               const letterVariant = {

@@ -18,7 +18,7 @@ export default function Navbar({
       style={{ backdropFilter: "blur(10px)" }}
     >
       <a href="/" className="flex items-center gap-2  cursor-pointer">
-        <img alt="logo" src="/logo.png" className="size-5" />
+        <img alt="logo" src="/Logo.png" className="size-5" />
         <h1 className="font-bold">
           <span className="bg-gradient-to-br from-blue-500 to-cyan-400 bg-clip-text text-transparent">
             Namma
