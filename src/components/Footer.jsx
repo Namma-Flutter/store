@@ -20,7 +20,7 @@ export default function Footer() {
         transition={{ delay: 0.7 }}
         className="absolute hidden sm:block tracking-tighter text-[12rem] h-full my-auto sm:tracking-[-20px] text-[#262626] font-black  top-0 left-[2rem]"
       >
-        STYLE HUB
+        Namma Flutter
       </motion.h1>
 
       <div className="h-full items-baseline sm:items-end flex sm:gap-0 gap-10 sm:flex-row flex-col">
@@ -42,7 +42,7 @@ export default function Footer() {
             transition={{ delay: 0.2 }}
             className="bg-white w-max p-1 rounded"
           >
-            <img alt="logo" src="/logo.svg" className="size-8 " />
+            <img alt="logo" src="/logo.png" className="size-8 " />
           </motion.div>
           <motion.h1
             initial={
@@ -59,8 +59,8 @@ export default function Footer() {
             transition={{ delay: 0.4 }}
             className="text-[24px] font-bold leading-[.8] tracking-tighter"
           >
-            STYLE
-            <br /> HUB
+            Namma
+            <br /> Flutter
           </motion.h1>
         </div>
         <motion.div
